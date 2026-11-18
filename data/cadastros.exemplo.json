@@ -1,0 +1,22 @@
+[
+  {
+    "id": "c-001",
+    "email": "seu.email@gmail.com",
+    "codigo_parada": 340015329,
+    "linha": "8000-10",
+    "sentido": 1,
+    "limiar_min": 10,
+    "somente_acessivel": true,
+    "ativo": true,
+    "janela": { "inicio": "06:30", "fim": "09:00", "dias": ["seg", "ter", "qua", "qui", "sex"] }
+  },
+  {
+    "id": "c-002",
+    "email": "outro.usuario@gmail.com",
+    "codigo_parada": 340015329,
+    "linha": "875A-10",
+    "sentido": 2,
+    "limiar_min": 15,
+    "janela": { "inicio": "17:00", "fim": "20:00" }
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "versao": 1,
+  "gerado_em": "2026-11-18T22:55:07.592Z",
+  "api_disponivel": true,
+  "paradas": [
+    {
+      "codigo_parada": 260016859,
+      "nome": "PARADA PAULISTA B/C",
+      "linhas": [
+        {
+          "linha": "8000-10",
+          "sentido": 1,
+          "status": "ok",
+          "proximo": {
+            "minutos": 3,
+            "acessivel": false
+          },
+          "proximo_acessivel": null,
+          "veiculos_previstos": 2,
+          "pct_acessiveis": 0
+        }
+      ]
+    },
+    {
+      "codigo_parada": 340015329,
+      "nome": "PARADA PAULISTA B/C",
+      "linhas": [
+        {
+          "linha": "8000-10",
+          "sentido": 1,
+          "status": "ok",
+          "proximo": {
+            "minutos": 3,
+            "acessivel": false
+          },
+          "proximo_acessivel": {
+            "minutos": 6
+          },
+          "veiculos_previstos": 2,
+          "pct_acessiveis": 50
+        }
+      ]
+    }
+  ]
+}

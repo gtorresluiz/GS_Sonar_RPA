@@ -1,0 +1,11 @@
+# Segredos
+.env
+# Dados pessoais dos usuários e estado de execução (LGPD: não publicar)
+data/cadastros.json
+data/estado.json
+data/status_mvp.json
+data/*.tmp
+# Logs de execução real ficam fora do Git; amostras sem dados sensíveis ficam em logs/amostras/
+logs/*.jsonl
+node_modules/
+.DS_Store
