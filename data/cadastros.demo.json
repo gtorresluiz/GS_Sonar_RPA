@@ -1,0 +1,22 @@
+[
+  {
+    "id": "demo-001",
+    "email": "SEU.EMAIL@gmail.com",
+    "codigo_parada": 340015329,
+    "linha": "8000-10",
+    "sentido": 1,
+    "limiar_min": 8,
+    "somente_acessivel": true,
+    "janela": { "inicio": "00:00", "fim": "23:59" }
+  },
+  {
+    "id": "demo-002",
+    "email": "SEU.EMAIL@gmail.com",
+    "codigo_parada": 340015329,
+    "linha": "875A-10",
+    "sentido": 2,
+    "limiar_min": 8,
+    "somente_acessivel": true,
+    "janela": { "inicio": "00:00", "fim": "23:59" }
+  }
+]

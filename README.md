@@ -96,6 +96,18 @@ scripts/   iniciar o n8n com as variáveis corretas (Windows e Linux/macOS)
 6. **Importe o fluxo** em *Workflows → Import from file → `n8n/sentinela-sonar.workflow.json`*. Em seguida, abra os nós **Enviar e-mail ao usuário** e **Alertar administrador** e selecione a credencial SMTP.
 7. Teste com **Execute workflow** (gatilho manual). Para deixar o robô rodando a cada minuto, ative o fluxo com o botão **Active**.
 
+### Modo simulação (sem depender da chave da SPTrans)
+
+`src/mock-olhovivo.js` é um simulador local da API Olho Vivo v2.1, com os mesmos endpoints e o mesmo formato de resposta. A frota simulada mistura ônibus acessíveis e não acessíveis, e as previsões mudam a cada minuto. Ele foi usado na demonstração enquanto a chave da SPTrans aguardava liberação.
+
+```powershell
+node src/mock-olhovivo.js                     # terminal separado; deixe aberto
+# no .env: OLHOVIVO_BASE_URL=http://localhost:3001/v2.1
+# para simular a API fora do ar:  $env:MOCK_CENARIO="fora"; node src/mock-olhovivo.js
+```
+
+Para voltar à API real, basta trocar `OLHOVIVO_BASE_URL` no `.env` e reiniciar o n8n.
+
 ### Como forçar cada cenário para a demonstração
 
 | Cenário | Como provocar |
