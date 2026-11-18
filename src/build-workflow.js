@@ -21,7 +21,7 @@ const codigoOrdenado = (arq) => [
 ].join('\n');
 
 const uid = (s) => crypto.createHash('md5').update(s).digest('hex').replace(/^(.{8})(.{4})(.{4})(.{4})(.{12}).*$/, '$1-$2-$3-$4-$5');
-const BASE = "{{ $env.OLHOVIVO_BASE_URL || 'http://api.olhovivo.sptrans.com.br/v2.1' }}";
+const BASE = "{{ $env.OLHOVIVO_BASE_URL || 'https://api.olhovivo.sptrans.com.br/v2.1' }}";
 
 const ifBool = (nome, expr, pos) => ({
   parameters: {

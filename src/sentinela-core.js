@@ -150,7 +150,7 @@ function resumirLinha(previsao, linha, sentido) {
         prefixo,
         minutos: minutosAte(previsao.hr, v.t),
         acessivel: v.a === true,
-        destino: Number(l.sl) === 2 ? l.lt0 : l.lt1,
+        destino: l.lt0, // letreiro de destino (doc. SPTrans)
       });
     }
   }

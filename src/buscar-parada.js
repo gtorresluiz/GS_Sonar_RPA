@@ -18,7 +18,7 @@ function carregarEnv() {
 async function main() {
   carregarEnv();
   const token = process.env.OLHOVIVO_TOKEN;
-  const base = process.env.OLHOVIVO_BASE_URL || 'http://api.olhovivo.sptrans.com.br/v2.1';
+  const base = process.env.OLHOVIVO_BASE_URL || 'https://api.olhovivo.sptrans.com.br/v2.1';
   if (!token) throw new Error('Defina OLHOVIVO_TOKEN no arquivo .env');
 
   const login = await fetch(base + '/Login/Autenticar?token=' + token, { method: 'POST' });
@@ -34,7 +34,7 @@ async function main() {
     if (!r.p) return console.log('Sem previsão para essa parada agora.');
     console.log('Parada', r.p.cp, '-', r.p.np, '| horário da API:', r.hr);
     for (const l of r.p.l) {
-      console.log('\n  Linha', l.c, '| sentido', l.sl, '→', l.sl === 2 ? l.lt0 : l.lt1);
+      console.log('\n  Linha', l.c, '| sentido', l.sl, '→', l.lt0);
       for (const v of l.vs) console.log('    prefixo', v.p, '| chega', v.t, '|', v.a ? 'ACESSÍVEL' : 'não acessível');
     }
     return;

@@ -1,6 +1,6 @@
 # Resultados dos testes de ponta a ponta (simulação do n8n)
 
-Gerado por `node tests/simular-n8n.js` em 2026-11-18T22:55:07.520Z.
+Gerado por `node tests/simular-n8n.js` em 2026-11-18T23:44:28.533Z.
 O código executado é o mesmo exportado em `n8n/sentinela-sonar.workflow.json`; a API Olho Vivo e o SMTP são simulados.
 
 | ID | Tipo | Cenário | Caminho percorrido no fluxo |
