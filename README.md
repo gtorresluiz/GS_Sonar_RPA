@@ -12,8 +12,8 @@ Automação da **Global Solution 2026.2 (FIAP · CitizenTech · Engenharia de So
 | Rodrigo Resende Viana | 551057 |
 | Caíque Chagas Nitta | 551943 |
 
-▶️ **Vídeo de demonstração:** https://www.youtube.com/watch?v=WyijKzd8340
-▶️ **Vídeo do projeto:** https://www.youtube.com/watch?v=WN7GGS0Ydko
+### ▶️ **Vídeo de demonstração:** https://www.youtube.com/watch?v=WyijKzd8340
+### ▶️ **Vídeo do projeto:** https://www.youtube.com/watch?v=WN7GGS0Ydko
 
 ## Problema
 
