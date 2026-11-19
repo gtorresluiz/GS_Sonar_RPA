@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2280" height="740" viewBox="-20 90 2280 650" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="seta" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker></defs>
+<rect x="-20" y="90" width="2280" height="740" fill="#fff"/>
+<rect x="-10" y="110" width="2250" height="610" fill="none" stroke="#333" stroke-width="1.5"/>
+<rect x="-10" y="110" width="30" height="610" fill="#f2f2f2" stroke="#333" stroke-width="1.5"/>
+<text transform="translate(10,415) rotate(-90)" text-anchor="middle" font-size="14" font-weight="bold">Robô Sentinela Sonar (n8n)</text>
+<text x="40" y="140" font-size="20" font-weight="bold" fill="#222">Sentinela Sonar — fluxo BPMN da automação (RPA)</text>
+<path d="M98,210 L135,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M265,210 L315,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M365,210 L415,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="371" y="204" font-size="12" fill="#555" text-anchor="start">sim</text>
+<path d="M340,235 L340,330" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="346" y="251" font-size="12" fill="#555" text-anchor="start">não</text>
+<path d="M340,410 L340,482" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M545,210 L595,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M645,210 L695,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="651" y="204" font-size="12" fill="#555" text-anchor="start">sim</text>
+<path d="M620,235 L620,352" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="626" y="251" font-size="12" fill="#555" text-anchor="start">não</text>
+<path d="M825,210 L875,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M925,210 L975,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="931" y="204" font-size="12" fill="#555" text-anchor="start">sim</text>
+<path d="M900,235 L900,330" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="906" y="251" font-size="12" fill="#555" text-anchor="start">não / erro</text>
+<path d="M965,370 L1025,370" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M1050,395 L1050,482" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="1056" y="411" font-size="12" fill="#555" text-anchor="start">sim</text>
+<path d="M1075,370 L1115,370" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="1081" y="364" font-size="12" fill="#555" text-anchor="start">não</text>
+<path d="M1245,370 L1282,370" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M1105,210 L1125,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M1255,210 L1275,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M1405,210 L1425,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M1555,210 L1605,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M1655,210 L1705,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="1661" y="204" font-size="12" fill="#555" text-anchor="start">sim</text>
+<path d="M1630,235 L1630,352" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="1636" y="251" font-size="12" fill="#555" text-anchor="start">não</text>
+<path d="M1835,210 L1885,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M1935,210 L1985,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="1941" y="204" font-size="12" fill="#555" text-anchor="start">sim</text>
+<path d="M1910,235 L1910,330" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<text x="1916" y="251" font-size="12" fill="#555" text-anchor="start">não</text>
+<path d="M2115,210 L2162,210" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<path d="M1975,370 L2032,370" fill="none" stroke="#333" stroke-width="1.4" marker-end="url(#seta)"/>
+<circle cx="80" cy="210" r="18" fill="#fff" stroke="#333" stroke-width="1.6"/>
+<circle cx="80" cy="210" r="12" fill="none" stroke="#333" stroke-width="1.2"/>
+<path d="M80,201 L80,210 L86,213" fill="none" stroke="#333" stroke-width="1.4"/>
+<text x="80" y="244" font-size="12" text-anchor="middle" fill="#222">A cada 1 minuto</text>
+<rect x="135.0" y="170.0" width="130" height="80" rx="10" fill="#f7f7f7" stroke="#333" stroke-width="1.5"/>
+<path d="M144.0,176.0 h12 q-5,6 0,12 h-12 q5,-6 0,-12 z M146.0,180.0 h7 M146.0,184.0 h7" fill="none" stroke="#333"/>
+<text x="200" y="207" font-size="12" text-anchor="middle" fill="#222">Ler cadastros</text>
+<text x="200" y="221" font-size="12" text-anchor="middle" fill="#222">(data/cadastros.json)</text>
+<path d="M340,185 L365,210 L340,235 L315,210 z" fill="#fffbe6" stroke="#333" stroke-width="1.5"/>
+<path d="M332,202 L348,218 M348,202 L332,218" stroke="#333" stroke-width="3"/>
+<text x="340" y="176" font-size="12" text-anchor="middle" font-weight="bold" fill="#222">Arquivo legível?</text>
+<rect x="275.0" y="330.0" width="130" height="80" rx="10" fill="#f7f7f7" stroke="#333" stroke-width="1.5"/>
+<path d="M284.0,336.0 h12 q-5,6 0,12 h-12 q5,-6 0,-12 z M286.0,340.0 h7 M286.0,344.0 h7" fill="none" stroke="#333"/>
+<text x="340" y="367" font-size="12" text-anchor="middle" fill="#222">Registrar erro no</text>
+<text x="340" y="381" font-size="12" text-anchor="middle" fill="#222">log</text>
+<circle cx="340" cy="500" r="18" fill="#fff" stroke="#333" stroke-width="4"/>
+<path d="M333,507 L337,493 L342,501 L347,492 L344,507 L339,499 z" fill="#333"/>
+<text x="340" y="534" font-size="12" text-anchor="middle" fill="#222">Execução falha</text>
+<text x="340" y="548" font-size="12" text-anchor="middle" fill="#222">(erro explícito)</text>
+<rect x="415.0" y="170.0" width="130" height="80" rx="10" fill="#f7f7f7" stroke="#333" stroke-width="1.5"/>
+<path d="M424.0,176.0 h12 q-5,6 0,12 h-12 q5,-6 0,-12 z M426.0,180.0 h7 M426.0,184.0 h7" fill="none" stroke="#333"/>
+<text x="480" y="185" font-size="12" text-anchor="middle" fill="#222">Validar, remover</text>
+<text x="480" y="199" font-size="12" text-anchor="middle" fill="#222">duplicados e</text>
+<text x="480" y="213" font-size="12" text-anchor="middle" fill="#222">filtrar janela de</text>
+<text x="480" y="227" font-size="12" text-anchor="middle" fill="#222">horário</text>
+<path d="M474,234.0 v11 M480,234.0 v11 M486,234.0 v11" stroke="#333" stroke-width="2"/>
+<path d="M620,185 L645,210 L620,235 L595,210 z" fill="#fffbe6" stroke="#333" stroke-width="1.5"/>
+<path d="M612,202 L628,218 M628,202 L612,218" stroke="#333" stroke-width="3"/>
+<text x="620" y="162" font-size="12" text-anchor="middle" font-weight="bold" fill="#222">Há cadastros na</text>
+<text x="620" y="176" font-size="12" text-anchor="middle" font-weight="bold" fill="#222">janela?</text>
+<circle cx="620" cy="370" r="18" fill="#fff" stroke="#333" stroke-width="4"/>
+<text x="620" y="404" font-size="12" text-anchor="middle" fill="#222">Ciclo encerrado</text>
+<rect x="695.0" y="170.0" width="130" height="80" rx="10" fill="#eef7ee" stroke="#333" stroke-width="1.5"/>
+<circle cx="710.0" cy="184.0" r="6" fill="none" stroke="#333" stroke-width="2.5" stroke-dasharray="3,2"/>
+<text x="760" y="200" font-size="12" text-anchor="middle" fill="#222">Autenticar na API</text>
+<text x="760" y="214" font-size="12" text-anchor="middle" fill="#222">Olho Vivo (até 3</text>
+<text x="760" y="228" font-size="12" text-anchor="middle" fill="#222">tentativas)</text>
+<path d="M900,185 L925,210 L900,235 L875,210 z" fill="#fffbe6" stroke="#333" stroke-width="1.5"/>
+<path d="M892,202 L908,218 M908,202 L892,218" stroke="#333" stroke-width="3"/>
+<text x="900" y="176" font-size="12" text-anchor="middle" font-weight="bold" fill="#222">Login OK?</text>
+<rect x="835.0" y="330.0" width="130" height="80" rx="10" fill="#f7f7f7" stroke="#333" stroke-width="1.5"/>
+<path d="M844.0,336.0 h12 q-5,6 0,12 h-12 q5,-6 0,-12 z M846.0,340.0 h7 M846.0,344.0 h7" fill="none" stroke="#333"/>
+<text x="900" y="353" font-size="12" text-anchor="middle" fill="#222">Registrar falha e</text>
+<text x="900" y="367" font-size="12" text-anchor="middle" fill="#222">marcar</text>
+<text x="900" y="381" font-size="12" text-anchor="middle" fill="#222">api_disponivel=false</text>
+<text x="900" y="395" font-size="12" text-anchor="middle" fill="#222">para o MVP</text>
+<path d="M1050,345 L1075,370 L1050,395 L1025,370 z" fill="#fffbe6" stroke="#333" stroke-width="1.5"/>
+<path d="M1042,362 L1058,378 M1058,362 L1042,378" stroke="#333" stroke-width="3"/>
+<text x="1050" y="322" font-size="12" text-anchor="middle" font-weight="bold" fill="#222">Admin alertado</text>
+<text x="1050" y="336" font-size="12" text-anchor="middle" font-weight="bold" fill="#222">há &lt; 30 min?</text>
+<circle cx="1050" cy="500" r="18" fill="#fff" stroke="#333" stroke-width="4"/>
+<text x="1050" y="534" font-size="12" text-anchor="middle" fill="#222">Fim (alerta</text>
+<text x="1050" y="548" font-size="12" text-anchor="middle" fill="#222">suprimido)</text>
+<rect x="1115.0" y="330.0" width="130" height="80" rx="10" fill="#e8f4ff" stroke="#333" stroke-width="1.5"/>
+<rect x="1122.0" y="337.0" width="18" height="12" fill="#333"/><path d="M1122.0,337.0 L1131.0,344.0 L1140.0,337.0" stroke="#fff" fill="none"/>
+<text x="1180" y="360" font-size="12" text-anchor="middle" fill="#222">Enviar e-mail de</text>
+<text x="1180" y="374" font-size="12" text-anchor="middle" fill="#222">alerta ao</text>
+<text x="1180" y="388" font-size="12" text-anchor="middle" fill="#222">administrador</text>
+<circle cx="1300" cy="370" r="18" fill="#fff" stroke="#333" stroke-width="4"/>
+<text x="1300" y="404" font-size="12" text-anchor="middle" fill="#222">Fim (nova</text>
+<text x="1300" y="418" font-size="12" text-anchor="middle" fill="#222">tentativa no</text>
+<text x="1300" y="432" font-size="12" text-anchor="middle" fill="#222">próximo ciclo)</text>
+<rect x="975.0" y="170.0" width="130" height="80" rx="10" fill="#f7f7f7" stroke="#333" stroke-width="1.5"/>
+<path d="M984.0,176.0 h12 q-5,6 0,12 h-12 q5,-6 0,-12 z M986.0,180.0 h7 M986.0,184.0 h7" fill="none" stroke="#333"/>
+<text x="1040" y="207" font-size="12" text-anchor="middle" fill="#222">Agrupar cadastros</text>
+<text x="1040" y="221" font-size="12" text-anchor="middle" fill="#222">por parada</text>
+<rect x="1125.0" y="170.0" width="130" height="80" rx="10" fill="#eef7ee" stroke="#333" stroke-width="1.5"/>
+<circle cx="1140.0" cy="184.0" r="6" fill="none" stroke="#333" stroke-width="2.5" stroke-dasharray="3,2"/>
+<text x="1190" y="192" font-size="12" text-anchor="middle" fill="#222">Consultar previsão</text>
+<text x="1190" y="206" font-size="12" text-anchor="middle" fill="#222">de cada parada (2</text>
+<text x="1190" y="220" font-size="12" text-anchor="middle" fill="#222">tentativas)</text>
+<path d="M1184,234.0 v11 M1190,234.0 v11 M1196,234.0 v11" stroke="#333" stroke-width="2"/>
+<rect x="1275.0" y="170.0" width="130" height="80" rx="10" fill="#f7f7f7" stroke="#333" stroke-width="1.5"/>
+<path d="M1284.0,176.0 h12 q-5,6 0,12 h-12 q5,-6 0,-12 z M1286.0,180.0 h7 M1286.0,184.0 h7" fill="none" stroke="#333"/>
+<text x="1340" y="185" font-size="12" text-anchor="middle" fill="#222">Para cada</text>
+<text x="1340" y="199" font-size="12" text-anchor="middle" fill="#222">cadastro: aplicar</text>
+<text x="1340" y="213" font-size="12" text-anchor="middle" fill="#222">regras 1–3 e</text>
+<text x="1340" y="227" font-size="12" text-anchor="middle" fill="#222">deduplicação</text>
+<path d="M1334,234.0 v11 M1340,234.0 v11 M1346,234.0 v11" stroke="#333" stroke-width="2"/>
+<rect x="1425.0" y="170.0" width="130" height="80" rx="10" fill="#f7f7f7" stroke="#333" stroke-width="1.5"/>
+<path d="M1434.0,176.0 h12 q-5,6 0,12 h-12 q5,-6 0,-12 z M1436.0,180.0 h7 M1436.0,184.0 h7" fill="none" stroke="#333"/>
+<text x="1490" y="200" font-size="12" text-anchor="middle" fill="#222">Gravar</text>
+<text x="1490" y="214" font-size="12" text-anchor="middle" fill="#222">status_mvp.json e</text>
+<text x="1490" y="228" font-size="12" text-anchor="middle" fill="#222">log de decisões</text>
+<path d="M1630,185 L1655,210 L1630,235 L1605,210 z" fill="#fffbe6" stroke="#333" stroke-width="1.5"/>
+<path d="M1622,202 L1638,218 M1638,202 L1622,218" stroke="#333" stroke-width="3"/>
+<text x="1630" y="176" font-size="12" text-anchor="middle" font-weight="bold" fill="#222">Deve notificar?</text>
+<circle cx="1630" cy="370" r="18" fill="#fff" stroke="#333" stroke-width="4"/>
+<text x="1630" y="404" font-size="12" text-anchor="middle" fill="#222">Sem notificação</text>
+<rect x="1705.0" y="170.0" width="130" height="80" rx="10" fill="#e8f4ff" stroke="#333" stroke-width="1.5"/>
+<rect x="1712.0" y="177.0" width="18" height="12" fill="#333"/><path d="M1712.0,177.0 L1721.0,184.0 L1730.0,177.0" stroke="#fff" fill="none"/>
+<text x="1770" y="199" font-size="12" text-anchor="middle" fill="#222">Enviar e-mail ao</text>
+<text x="1770" y="213" font-size="12" text-anchor="middle" fill="#222">usuário</text>
+<path d="M1764,234.0 v11 M1770,234.0 v11 M1776,234.0 v11" stroke="#333" stroke-width="2"/>
+<path d="M1910,185 L1935,210 L1910,235 L1885,210 z" fill="#fffbe6" stroke="#333" stroke-width="1.5"/>
+<path d="M1902,202 L1918,218 M1918,202 L1902,218" stroke="#333" stroke-width="3"/>
+<text x="1910" y="176" font-size="12" text-anchor="middle" font-weight="bold" fill="#222">E-mail enviado?</text>
+<rect x="1985.0" y="170.0" width="130" height="80" rx="10" fill="#f7f7f7" stroke="#333" stroke-width="1.5"/>
+<path d="M1994.0,176.0 h12 q-5,6 0,12 h-12 q5,-6 0,-12 z M1996.0,180.0 h7 M1996.0,184.0 h7" fill="none" stroke="#333"/>
+<text x="2050" y="207" font-size="12" text-anchor="middle" fill="#222">Marcar aviso como</text>
+<text x="2050" y="221" font-size="12" text-anchor="middle" fill="#222">enviado + log</text>
+<circle cx="2180" cy="210" r="18" fill="#fff" stroke="#333" stroke-width="4"/>
+<text x="2180" y="244" font-size="12" text-anchor="middle" fill="#222">Fim do ciclo</text>
+<rect x="1845.0" y="330.0" width="130" height="80" rx="10" fill="#f7f7f7" stroke="#333" stroke-width="1.5"/>
+<path d="M1854.0,336.0 h12 q-5,6 0,12 h-12 q5,-6 0,-12 z M1856.0,340.0 h7 M1856.0,344.0 h7" fill="none" stroke="#333"/>
+<text x="1910" y="360" font-size="12" text-anchor="middle" fill="#222">Registrar falha de</text>
+<text x="1910" y="374" font-size="12" text-anchor="middle" fill="#222">envio (reenvia no</text>
+<text x="1910" y="388" font-size="12" text-anchor="middle" fill="#222">próximo ciclo)</text>
+<circle cx="2050" cy="370" r="18" fill="#fff" stroke="#333" stroke-width="4"/>
+<text x="2050" y="404" font-size="12" text-anchor="middle" fill="#222">Fim do ciclo</text>
+<path d="M1340,250 L1560,520" stroke="#666" stroke-dasharray="4,3"/>
+<path d="M1515,520 H1500 V670 H1515" fill="none" stroke="#333" stroke-width="1.5"/>
+<rect x="1502" y="520" width="470" height="150" fill="#fffdf0" opacity="0.9"/>
+<text x="1510" y="540" font-size="12.5" font-weight="bold" fill="#222" xml:space="preserve">Regras de negócio (por cadastro)</text>
+<text x="1510" y="557" font-size="12.5" fill="#222" xml:space="preserve">R1: ônibus ACESSÍVEL a ≤ limiar → aviso "está chegando"</text>
+<text x="1510" y="574" font-size="12.5" fill="#222" xml:space="preserve">      (+ alerta se antes passa um não acessível)</text>
+<text x="1510" y="591" font-size="12.5" fill="#222" xml:space="preserve">R2: próximo ônibus NÃO acessível a ≤ limiar → alerta com</text>
+<text x="1510" y="608" font-size="12.5" fill="#222" xml:space="preserve">      tempo até o próximo acessível</text>
+<text x="1510" y="625" font-size="12.5" fill="#222" xml:space="preserve">R3: nada perto → aguardando (sem envio)</text>
+<text x="1510" y="642" font-size="12.5" fill="#222" xml:space="preserve">Sem repetição: mesmo aviso 1x a cada 90 min;</text>
+<text x="1510" y="659" font-size="12.5" fill="#222" xml:space="preserve">alerta R2 no máx. 1x a cada 15 min por cadastro</text>
+<text x="40" y="705" font-size="12" fill="#555">Legenda: ◯ evento (início com relógio = timer · fim · fim com raio = erro) · ◇✕ decisão exclusiva · tarefa de script / serviço (API) / envio (e-mail) · ||| = repetição sobre uma coleção</text>
+</svg>

@@ -15,7 +15,7 @@ const EXEC_ID = String($execution.id);
 
 function lerJson(arquivo, padrao) {
   try {
-    return JSON.parse(fs.readFileSync(path.join(DATA_DIR, arquivo), 'utf8'));
+    return JSON.parse(fs.readFileSync(path.join(DATA_DIR, arquivo), 'utf8').replace(/^\uFEFF/, '')); // remove BOM do PowerShell
   } catch (e) {
     if (padrao !== undefined) return padrao;
     throw e;

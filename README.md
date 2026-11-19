@@ -65,7 +65,7 @@ Um robô no **n8n** roda **a cada minuto** e:
 ```
 n8n/       workflow exportado (importar no n8n)
 src/       núcleo de regras (sentinela-core.js), I/O, código de cada nó, build e utilitário de busca de paradas
-docs/      fluxo BPMN, contrato da saída para o MVP
+docs/      fluxo BPMN (sentinela-sonar.bpmn + PNG), contrato da saída para o MVP
 assets/    prints do fluxo e evidências
 logs/      amostras de log SEM dados sensíveis (logs/amostras/)
 tests/     testes automatizados, simulação de ponta a ponta e RESULTADOS.md
@@ -148,6 +148,21 @@ Os logs ficam em `logs/sentinela-AAAA-MM-DD.jsonl`, com um evento JSON por linha
 - **Dados reais fora do repositório público:** `cadastros.json`, `estado.json` e os logs de produção estão no `.gitignore`.
 - **Retenção:** o estado de deduplicação guarda chaves por no máximo 90 minutos.
 - **Base legal (proposta):** consentimento do usuário no cadastro, com opção de desativar (`"ativo": false`) ou excluir o cadastro.
+
+## Evidências
+
+Execuções reais no n8n, com o simulador da API Olho Vivo (prints em [`assets/`](assets/)):
+
+| Cenário | Evidência |
+|---|---|
+| Fluxo do BPMN | ![BPMN](docs/sentinela-sonar-bpmn.png) |
+| Sucesso: fluxo completo | ![Fluxo com sucesso](assets/01-evidencia-fluxo.jpg) |
+| Sucesso: e-mail de ônibus acessível chegando | ![E-mail acessível](assets/02-evidencia-email-acessivel.jpg) |
+| Decisão: alerta de ônibus não acessível | ![E-mail não acessível](assets/02-1-evidencia-email-N-acessivel.jpg) |
+| Decisão: aviso não se repete | ![Sem notificação](assets/03-decisao-sem-disparo.jpg) |
+| Falha: API fora do ar | ![Fluxo de falha](assets/04-falha-servidor.jpg) |
+| Falha: e-mail ao administrador | ![E-mail ao admin](assets/05-falha-servidor-email.jpg) |
+| Logs de auditoria | ![Logs](assets/06-logs.jpg) |
 
 ## Testes
 

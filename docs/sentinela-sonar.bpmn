@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="defs_sentinela" targetNamespace="http://fiap.com.br/gs/sonar">
+<bpmn:collaboration id="colab"><bpmn:participant id="pool" name="Robô Sentinela Sonar (n8n)" processRef="sentinela" /></bpmn:collaboration>
+<bpmn:process id="sentinela" name="Sentinela Sonar" isExecutable="false">
+<bpmn:startEvent id="start" name="A cada 1 minuto"><bpmn:outgoing>f0</bpmn:outgoing><bpmn:timerEventDefinition><bpmn:timeCycle xsi:type="bpmn:tFormalExpression">R/PT1M</bpmn:timeCycle></bpmn:timerEventDefinition></bpmn:startEvent>
+<bpmn:scriptTask id="ler" name="Ler cadastros (data/cadastros.json)"><bpmn:incoming>f0</bpmn:incoming><bpmn:outgoing>f1</bpmn:outgoing></bpmn:scriptTask>
+<bpmn:exclusiveGateway id="gwArq" name="Arquivo legível?"><bpmn:incoming>f1</bpmn:incoming><bpmn:outgoing>f2</bpmn:outgoing><bpmn:outgoing>f3</bpmn:outgoing></bpmn:exclusiveGateway>
+<bpmn:scriptTask id="logArq" name="Registrar erro no log"><bpmn:incoming>f3</bpmn:incoming><bpmn:outgoing>f4</bpmn:outgoing></bpmn:scriptTask>
+<bpmn:endEvent id="endArq" name="Execução falha (erro explícito)"><bpmn:incoming>f4</bpmn:incoming><bpmn:errorEventDefinition /></bpmn:endEvent>
+<bpmn:scriptTask id="validar" name="Validar, remover duplicados e filtrar janela de horário"><bpmn:incoming>f2</bpmn:incoming><bpmn:outgoing>f5</bpmn:outgoing><bpmn:multiInstanceLoopCharacteristics isSequential="true" /></bpmn:scriptTask>
+<bpmn:exclusiveGateway id="gwJanela" name="Há cadastros na janela?"><bpmn:incoming>f5</bpmn:incoming><bpmn:outgoing>f6</bpmn:outgoing><bpmn:outgoing>f7</bpmn:outgoing></bpmn:exclusiveGateway>
+<bpmn:endEvent id="endVazio" name="Ciclo encerrado"><bpmn:incoming>f7</bpmn:incoming></bpmn:endEvent>
+<bpmn:serviceTask id="login" name="Autenticar na API Olho Vivo (até 3 tentativas)"><bpmn:incoming>f6</bpmn:incoming><bpmn:outgoing>f8</bpmn:outgoing></bpmn:serviceTask>
+<bpmn:exclusiveGateway id="gwLogin" name="Login OK?"><bpmn:incoming>f8</bpmn:incoming><bpmn:outgoing>f9</bpmn:outgoing><bpmn:outgoing>f10</bpmn:outgoing></bpmn:exclusiveGateway>
+<bpmn:scriptTask id="falha" name="Registrar falha e marcar api_disponivel=false para o MVP"><bpmn:incoming>f10</bpmn:incoming><bpmn:outgoing>f11</bpmn:outgoing></bpmn:scriptTask>
+<bpmn:exclusiveGateway id="gwAlerta" name="Admin alertado há &lt; 30 min?"><bpmn:incoming>f11</bpmn:incoming><bpmn:outgoing>f12</bpmn:outgoing><bpmn:outgoing>f13</bpmn:outgoing></bpmn:exclusiveGateway>
+<bpmn:endEvent id="endSup" name="Fim (alerta suprimido)"><bpmn:incoming>f12</bpmn:incoming></bpmn:endEvent>
+<bpmn:sendTask id="alerta" name="Enviar e-mail de alerta ao administrador"><bpmn:incoming>f13</bpmn:incoming><bpmn:outgoing>f14</bpmn:outgoing></bpmn:sendTask>
+<bpmn:endEvent id="endFalha" name="Fim (nova tentativa no próximo ciclo)"><bpmn:incoming>f14</bpmn:incoming></bpmn:endEvent>
+<bpmn:scriptTask id="agrupar" name="Agrupar cadastros por parada"><bpmn:incoming>f9</bpmn:incoming><bpmn:outgoing>f15</bpmn:outgoing></bpmn:scriptTask>
+<bpmn:serviceTask id="consultar" name="Consultar previsão de cada parada (2 tentativas)"><bpmn:incoming>f15</bpmn:incoming><bpmn:outgoing>f16</bpmn:outgoing><bpmn:multiInstanceLoopCharacteristics isSequential="true" /></bpmn:serviceTask>
+<bpmn:scriptTask id="avaliar" name="Para cada cadastro: aplicar regras 1–3 e deduplicação"><bpmn:incoming>f16</bpmn:incoming><bpmn:outgoing>f17</bpmn:outgoing><bpmn:multiInstanceLoopCharacteristics isSequential="true" /></bpmn:scriptTask>
+<bpmn:scriptTask id="gravar" name="Gravar status_mvp.json e log de decisões"><bpmn:incoming>f17</bpmn:incoming><bpmn:outgoing>f18</bpmn:outgoing></bpmn:scriptTask>
+<bpmn:exclusiveGateway id="gwNotif" name="Deve notificar?"><bpmn:incoming>f18</bpmn:incoming><bpmn:outgoing>f19</bpmn:outgoing><bpmn:outgoing>f20</bpmn:outgoing></bpmn:exclusiveGateway>
+<bpmn:endEvent id="endSem" name="Sem notificação"><bpmn:incoming>f20</bpmn:incoming></bpmn:endEvent>
+<bpmn:sendTask id="email" name="Enviar e-mail ao usuário"><bpmn:incoming>f19</bpmn:incoming><bpmn:outgoing>f21</bpmn:outgoing><bpmn:multiInstanceLoopCharacteristics isSequential="true" /></bpmn:sendTask>
+<bpmn:exclusiveGateway id="gwEnvio" name="E-mail enviado?"><bpmn:incoming>f21</bpmn:incoming><bpmn:outgoing>f22</bpmn:outgoing><bpmn:outgoing>f23</bpmn:outgoing></bpmn:exclusiveGateway>
+<bpmn:scriptTask id="marcar" name="Marcar aviso como enviado + log"><bpmn:incoming>f22</bpmn:incoming><bpmn:outgoing>f24</bpmn:outgoing></bpmn:scriptTask>
+<bpmn:endEvent id="endOk" name="Fim do ciclo"><bpmn:incoming>f24</bpmn:incoming></bpmn:endEvent>
+<bpmn:scriptTask id="logEnvio" name="Registrar falha de envio (reenvia no próximo ciclo)"><bpmn:incoming>f23</bpmn:incoming><bpmn:outgoing>f25</bpmn:outgoing></bpmn:scriptTask>
+<bpmn:endEvent id="endEnvio" name="Fim do ciclo"><bpmn:incoming>f25</bpmn:incoming></bpmn:endEvent>
+<bpmn:sequenceFlow id="f0" name="" sourceRef="start" targetRef="ler" />
+<bpmn:sequenceFlow id="f1" name="" sourceRef="ler" targetRef="gwArq" />
+<bpmn:sequenceFlow id="f2" name="sim" sourceRef="gwArq" targetRef="validar" />
+<bpmn:sequenceFlow id="f3" name="não" sourceRef="gwArq" targetRef="logArq" />
+<bpmn:sequenceFlow id="f4" name="" sourceRef="logArq" targetRef="endArq" />
+<bpmn:sequenceFlow id="f5" name="" sourceRef="validar" targetRef="gwJanela" />
+<bpmn:sequenceFlow id="f6" name="sim" sourceRef="gwJanela" targetRef="login" />
+<bpmn:sequenceFlow id="f7" name="não" sourceRef="gwJanela" targetRef="endVazio" />
+<bpmn:sequenceFlow id="f8" name="" sourceRef="login" targetRef="gwLogin" />
+<bpmn:sequenceFlow id="f9" name="sim" sourceRef="gwLogin" targetRef="agrupar" />
+<bpmn:sequenceFlow id="f10" name="não / erro" sourceRef="gwLogin" targetRef="falha" />
+<bpmn:sequenceFlow id="f11" name="" sourceRef="falha" targetRef="gwAlerta" />
+<bpmn:sequenceFlow id="f12" name="sim" sourceRef="gwAlerta" targetRef="endSup" />
+<bpmn:sequenceFlow id="f13" name="não" sourceRef="gwAlerta" targetRef="alerta" />
+<bpmn:sequenceFlow id="f14" name="" sourceRef="alerta" targetRef="endFalha" />
+<bpmn:sequenceFlow id="f15" name="" sourceRef="agrupar" targetRef="consultar" />
+<bpmn:sequenceFlow id="f16" name="" sourceRef="consultar" targetRef="avaliar" />
+<bpmn:sequenceFlow id="f17" name="" sourceRef="avaliar" targetRef="gravar" />
+<bpmn:sequenceFlow id="f18" name="" sourceRef="gravar" targetRef="gwNotif" />
+<bpmn:sequenceFlow id="f19" name="sim" sourceRef="gwNotif" targetRef="email" />
+<bpmn:sequenceFlow id="f20" name="não" sourceRef="gwNotif" targetRef="endSem" />
+<bpmn:sequenceFlow id="f21" name="" sourceRef="email" targetRef="gwEnvio" />
+<bpmn:sequenceFlow id="f22" name="sim" sourceRef="gwEnvio" targetRef="marcar" />
+<bpmn:sequenceFlow id="f23" name="não" sourceRef="gwEnvio" targetRef="logEnvio" />
+<bpmn:sequenceFlow id="f24" name="" sourceRef="marcar" targetRef="endOk" />
+<bpmn:sequenceFlow id="f25" name="" sourceRef="logEnvio" targetRef="endEnvio" />
+<bpmn:textAnnotation id="nota"><bpmn:text>Regras de negócio (por cadastro)
+R1: ônibus ACESSÍVEL a ≤ limiar → aviso "está chegando"
+      (+ alerta se antes passa um não acessível)
+R2: próximo ônibus NÃO acessível a ≤ limiar → alerta com
+      tempo até o próximo acessível
+R3: nada perto → aguardando (sem envio)
+Sem repetição: mesmo aviso 1x a cada 90 min;
+alerta R2 no máx. 1x a cada 15 min por cadastro</bpmn:text></bpmn:textAnnotation>
+<bpmn:association id="assocNota" sourceRef="avaliar" targetRef="nota" />
+</bpmn:process>
+<bpmndi:BPMNDiagram id="diag"><bpmndi:BPMNPlane id="plano" bpmnElement="colab">
+<bpmndi:BPMNShape id="pool_di" bpmnElement="pool" isHorizontal="true"><dc:Bounds x="-10" y="110" width="2250" height="610" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="start_di" bpmnElement="start"><dc:Bounds x="62" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="ler_di" bpmnElement="ler"><dc:Bounds x="135" y="170" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="gwArq_di" bpmnElement="gwArq" isMarkerVisible="true"><dc:Bounds x="315" y="185" width="50" height="50" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="logArq_di" bpmnElement="logArq"><dc:Bounds x="275" y="330" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="endArq_di" bpmnElement="endArq"><dc:Bounds x="322" y="482" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="validar_di" bpmnElement="validar"><dc:Bounds x="415" y="170" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="gwJanela_di" bpmnElement="gwJanela" isMarkerVisible="true"><dc:Bounds x="595" y="185" width="50" height="50" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="endVazio_di" bpmnElement="endVazio"><dc:Bounds x="602" y="352" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="login_di" bpmnElement="login"><dc:Bounds x="695" y="170" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="gwLogin_di" bpmnElement="gwLogin" isMarkerVisible="true"><dc:Bounds x="875" y="185" width="50" height="50" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="falha_di" bpmnElement="falha"><dc:Bounds x="835" y="330" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="gwAlerta_di" bpmnElement="gwAlerta" isMarkerVisible="true"><dc:Bounds x="1025" y="345" width="50" height="50" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="endSup_di" bpmnElement="endSup"><dc:Bounds x="1032" y="482" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="alerta_di" bpmnElement="alerta"><dc:Bounds x="1115" y="330" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="endFalha_di" bpmnElement="endFalha"><dc:Bounds x="1282" y="352" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="agrupar_di" bpmnElement="agrupar"><dc:Bounds x="975" y="170" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="consultar_di" bpmnElement="consultar"><dc:Bounds x="1125" y="170" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="avaliar_di" bpmnElement="avaliar"><dc:Bounds x="1275" y="170" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="gravar_di" bpmnElement="gravar"><dc:Bounds x="1425" y="170" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="gwNotif_di" bpmnElement="gwNotif" isMarkerVisible="true"><dc:Bounds x="1605" y="185" width="50" height="50" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="endSem_di" bpmnElement="endSem"><dc:Bounds x="1612" y="352" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="email_di" bpmnElement="email"><dc:Bounds x="1705" y="170" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="gwEnvio_di" bpmnElement="gwEnvio" isMarkerVisible="true"><dc:Bounds x="1885" y="185" width="50" height="50" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="marcar_di" bpmnElement="marcar"><dc:Bounds x="1985" y="170" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="endOk_di" bpmnElement="endOk"><dc:Bounds x="2162" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="logEnvio_di" bpmnElement="logEnvio"><dc:Bounds x="1845" y="330" width="130" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="endEnvio_di" bpmnElement="endEnvio"><dc:Bounds x="2032" y="352" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id="f0_di" bpmnElement="f0"><di:waypoint x="98" y="210" /><di:waypoint x="135" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f1_di" bpmnElement="f1"><di:waypoint x="265" y="210" /><di:waypoint x="315" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f2_di" bpmnElement="f2"><di:waypoint x="365" y="210" /><di:waypoint x="415" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f3_di" bpmnElement="f3"><di:waypoint x="340" y="235" /><di:waypoint x="340" y="330" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f4_di" bpmnElement="f4"><di:waypoint x="340" y="410" /><di:waypoint x="340" y="482" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f5_di" bpmnElement="f5"><di:waypoint x="545" y="210" /><di:waypoint x="595" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f6_di" bpmnElement="f6"><di:waypoint x="645" y="210" /><di:waypoint x="695" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f7_di" bpmnElement="f7"><di:waypoint x="620" y="235" /><di:waypoint x="620" y="352" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f8_di" bpmnElement="f8"><di:waypoint x="825" y="210" /><di:waypoint x="875" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f9_di" bpmnElement="f9"><di:waypoint x="925" y="210" /><di:waypoint x="975" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f10_di" bpmnElement="f10"><di:waypoint x="900" y="235" /><di:waypoint x="900" y="330" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f11_di" bpmnElement="f11"><di:waypoint x="965" y="370" /><di:waypoint x="1025" y="370" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f12_di" bpmnElement="f12"><di:waypoint x="1050" y="395" /><di:waypoint x="1050" y="482" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f13_di" bpmnElement="f13"><di:waypoint x="1075" y="370" /><di:waypoint x="1115" y="370" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f14_di" bpmnElement="f14"><di:waypoint x="1245" y="370" /><di:waypoint x="1282" y="370" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f15_di" bpmnElement="f15"><di:waypoint x="1105" y="210" /><di:waypoint x="1125" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f16_di" bpmnElement="f16"><di:waypoint x="1255" y="210" /><di:waypoint x="1275" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f17_di" bpmnElement="f17"><di:waypoint x="1405" y="210" /><di:waypoint x="1425" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f18_di" bpmnElement="f18"><di:waypoint x="1555" y="210" /><di:waypoint x="1605" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f19_di" bpmnElement="f19"><di:waypoint x="1655" y="210" /><di:waypoint x="1705" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f20_di" bpmnElement="f20"><di:waypoint x="1630" y="235" /><di:waypoint x="1630" y="352" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f21_di" bpmnElement="f21"><di:waypoint x="1835" y="210" /><di:waypoint x="1885" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f22_di" bpmnElement="f22"><di:waypoint x="1935" y="210" /><di:waypoint x="1985" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f23_di" bpmnElement="f23"><di:waypoint x="1910" y="235" /><di:waypoint x="1910" y="330" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f24_di" bpmnElement="f24"><di:waypoint x="2115" y="210" /><di:waypoint x="2162" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="f25_di" bpmnElement="f25"><di:waypoint x="1975" y="370" /><di:waypoint x="2032" y="370" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id="nota_di" bpmnElement="nota"><dc:Bounds x="1500" y="520" width="470" height="150" /></bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id="assocNota_di" bpmnElement="assocNota"><di:waypoint x="1340" y="250" /><di:waypoint x="1560" y="520" /></bpmndi:BPMNEdge>
+</bpmndi:BPMNPlane></bpmndi:BPMNDiagram>
+</bpmn:definitions>
